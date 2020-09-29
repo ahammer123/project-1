@@ -118,8 +118,12 @@ except:
 
 import wikipedia
 import random
+
+things = ["Vietnam","Syria","Afghanistan","The United States","Canada","Mexico","Turkmenistan","Sweden","Pakistan","Iran","Walmart","Mercedes-AMG","Python","Iphone","Samsung","Microsoft","Nvidia","Socialisim","Capitalisim","Amazon Rainforest","Amazon","Coding","Milk","Cereal",]
 #
-wikipedia_page = wikipedia.page("Groucho Marx")
+# wikipedia_page = wikipedia.page("'"+things[random.randrange(len(things))]+"'")
+topic = things[random.randrange(len(things))]
+wikipedia_page = wikipedia.page(topic)
 #
 # # This next line gets the textual content of the page and splits it up
 # # based on the characters ". " which creates a list of strings. The
@@ -137,4 +141,5 @@ print(sentences[0])
 random_number = random.randrange( len(sentences) )
 print( sentences[random_number] )
 
-api.update_status(sentences[0])
+# api.update_status(sentences[0])
+api.update_status("An interesting fact about " + topic + " is: "+ sentences[random.randrange(len(sentences))])
