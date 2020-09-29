@@ -4,20 +4,44 @@ from authorization_tokens import *
 
 import random
 
-import pronouncing
+# consumer_key = 'gO4uS9FcgbwiFR6rKUtjrRi83'
+# consumer_secret = '1yoN1hz30tetGHb9ofXf9c2fwLkcF9N7OmNaIfCmG5VotYVanJ'
+consumer_key = 'FnRl0EJ2IXyM8IytDrskiuuzt'
+consumer_secret = '8UkiysHXuzcQZY6f4VPuoxwat1L8LhGSYdf1RlaWSuqMVyhbkr'
+
+
+access_token = '1301523490365997057-qYya5kNen2pobQUyD8yBnwotvhzRMu'
+access_token_secret = 'L4eLhi1cwPnMGPsRJ5BWambMdyARFg2LBlw2qfmK6EUgI'
+
+
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_token_secret)
+
+
+api = tweepy.API(auth)
+
+try:
+    api.verify_credentials()
+    print("Authentication OK")
+except:
+    print("Error during authentication")
+
+#import pronouncing
 # op:1
 
 # pick a phrase randomly from a list
-# phrase_list =  [ "Hi, my name is miles",
+
+# phrase_list =  [ "Hi, my name is Groucho",
 #                     "I like python",
-#                     "twitter bots are fun"]
+#                     "I am a twitter bot"]
 # random_number = random.randrange(len(phrase_list) )
 # message = phrase_list[random_number]
 
 # op:2
 
-# create a sentance template with some blanks, and
+# create a sentence template with some blanks, and
 # randomly pick a word from a list to fill in each blank
+
 # word_list = [ "apricots", "blueberries", "celery", "dragonfruit"]
 #
 # string_template = "some people think {} tastes bad but enjoy the taste of {}?"
@@ -47,10 +71,7 @@ import pronouncing
 #
 # message = template.format(word1,word2)
 
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
 
-api = tweepy.API(auth)
 
 # option 4 basic search
 
@@ -74,41 +95,46 @@ api = tweepy.API(auth)
 
 #option 5b reply to recent mention with rhyme
 
-mentions = api.mentions_timeline(count=1)
-mention = mentions[0]
+# mentions = api.mentions_timeline(count=1)\
+# mention = mentions[0]
+#
+# mention_word_list = mention.text.split()
+# random_number = random.randrange( len(mention_word_list))
+# word = mention_word_list[random_number]
+#
+# rhyming_word_list = pronouncing.rhymes(word)
+# random_number = random.randrange( len(rhyming_word_list))
+# rhyme = rhyming_word_list[random_number]
+#
+# template = "some people like {} but I like {} "
+# message = template.format(word, rhyme)
+#
+# api.update_status(message, in_reply_to_status_id=mention.id)
+#
+# print("Done.")
 
-mention_word_list = mention.text.split()
-random_number = random.randrange( len(mention_word_list))
-word = mention_word_list[random_number]
 
-rhyming_word_list = pronouncing.rhymes(word)
-random_number = random.randrange( len(rhyming_word_list))
-rhyme = rhyming_word_list[random_number]
-
-template = "some people like {} but I like {} "
-message = template.format(word, rhyme)
-
-api.update_status(message, in_reply_to_status_id=mention.id)
-
-print("Done.")
+#wiki
 
 import wikipedia
 import random
-
-wikipedia_page = wikipedia.page("New York City")
-
-# This next line gets the textual content of the page and splits it up
-# based on the characters ". " which creates a list of strings. The
-# idea is that this would create a list of sentences, but it is not
-# perfect
+#
+wikipedia_page = wikipedia.page("Groucho Marx")
+#
+# # This next line gets the textual content of the page and splits it up
+# # based on the characters ". " which creates a list of strings. The
+# # idea is that this would create a list of sentences, but it is not
+# # perfect
 sentences = wikipedia_page.content.split(". ")
-
-# Now you can proceed with the patterns from the tutorials, looking at
-# any example where you have a list of strings. Some examples:
-
-# Prints the first sentence:
+#
+# # Now you can proceed with the patterns from the tutorials, looking at
+# # any example where you have a list of strings. Some examples:
+#
+# # Prints the first sentence:
 print(sentences[0])
-
-# Chooses a random sentence:
+#
+# # Chooses a random sentence:
 random_number = random.randrange( len(sentences) )
 print( sentences[random_number] )
+
+api.update_status(sentences[0])

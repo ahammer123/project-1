@@ -1,34 +1,9 @@
-"""
 
-    1. Add the following line to your requirements.txt file:
-       wikipedia==1.4.0
-
-    2. Modify your Dockerfile to change the last line to this:
-        CMD ["python3", "wikipedia-test.py"]
-
-    3. Run the docker build command again:
-        docker build . --tag project1:1.0
-
-    4. Now run the docker run command to run this file:
-        docker run --rm -it -v "$(pwd)/app:/app" project1:1.0
-
-    Hopefully you can see how to integrate some of the code below into
-    the main.py that you have been working on. If you have any
-    questions, let me know.
-
-    When you want to go back to working on main.py, change the last
-    line of your Dockerfile back to what it was before:
-        CMD ["python3", "wikipedia-test.py"]
-
-    and then run the docker build command again, and docker run as you
-    wish.
-
-"""
 
 import wikipedia
 import random
 
-wikipedia_page = wikipedia.page("New York City")
+wikipedia_page = wikipedia.page("snoop dogg")
 
 # This next line gets the textual content of the page and splits it up
 # based on the characters ". " which creates a list of strings. The
