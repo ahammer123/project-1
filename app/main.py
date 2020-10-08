@@ -4,15 +4,6 @@ from authorization_tokens import *
 
 import random
 
-# consumer_key = 'gO4uS9FcgbwiFR6rKUtjrRi83'
-# consumer_secret = '1yoN1hz30tetGHb9ofXf9c2fwLkcF9N7OmNaIfCmG5VotYVanJ'
-consumer_key = 'FnRl0EJ2IXyM8IytDrskiuuzt'
-consumer_secret = '8UkiysHXuzcQZY6f4VPuoxwat1L8LhGSYdf1RlaWSuqMVyhbkr'
-
-
-access_token = '1301523490365997057-qYya5kNen2pobQUyD8yBnwotvhzRMu'
-access_token_secret = 'L4eLhi1cwPnMGPsRJ5BWambMdyARFg2LBlw2qfmK6EUgI'
-
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
@@ -132,7 +123,7 @@ api.update_status(fact[:280])
 print(fact)
 
 
-exit()
+# exit()
 # api.update_status(message, mentions[random.randrange(len(mentions))
 
 # # wikipedia_page = wikipedia.page("'"+things[random.randrange(len(things))]+"'")
