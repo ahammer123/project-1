@@ -86,7 +86,8 @@ except:
 
 # mentions = api.mentions_timeline()
 # random_number = random.randrange( len(mentions) )
-# random_mention = mentions[random_number]
+# # random_mention = mentions[random_number]
+# latest_mention = mentions[0]
 #
 # message = "@" + random_mention.user.screen_name + " I promise im not a bot!"
 #
@@ -95,7 +96,7 @@ except:
 
 #option 5b reply to recent mention with rhyme
 
-# mentions = api.mentions_timeline(count=1)\
+# mentions = api.mentions_timeline(count=1)
 # mention = mentions[0]
 #
 # mention_word_list = mention.text.split()
@@ -114,32 +115,92 @@ except:
 # print("Done.")
 
 
-#wiki
-
+# #wiki
+#
 import wikipedia
 import random
 
-things = ["Vietnam","Syria","Afghanistan","The United States","Canada","Mexico","Turkmenistan","Sweden","Pakistan","Iran","Walmart","Mercedes-AMG","Python","Iphone","Samsung","Microsoft","Nvidia","Socialisim","Capitalisim","Amazon Rainforest","Amazon","Coding","Milk","Cereal",]
-#
-# wikipedia_page = wikipedia.page("'"+things[random.randrange(len(things))]+"'")
-topic = things[random.randrange(len(things))]
-wikipedia_page = wikipedia.page(topic)
-#
-# # This next line gets the textual content of the page and splits it up
-# # based on the characters ". " which creates a list of strings. The
-# # idea is that this would create a list of sentences, but it is not
-# # perfect
-sentences = wikipedia_page.content.split(". ")
-#
-# # Now you can proceed with the patterns from the tutorials, looking at
-# # any example where you have a list of strings. Some examples:
-#
-# # Prints the first sentence:
-print(sentences[0])
-#
-# # Chooses a random sentence:
-random_number = random.randrange( len(sentences) )
-print( sentences[random_number] )
 
-# api.update_status(sentences[0])
-api.update_status("An interesting fact about " + topic + " is: "+ sentences[random.randrange(len(sentences))])
+mentions = api.mentions_timeline(count=1)
+mention = mentions[0]
+search = " ".join(mention.text.split()[1:])
+wikipedia_page = wikipedia.page(search)
+sentences = wikipedia_page.content.split(". ")
+random_number = random.randrange( len(sentences) )
+fact = sentences[random_number]
+api.update_status(fact[:280])
+print(fact)
+
+
+exit()
+# api.update_status(message, mentions[random.randrange(len(mentions))
+
+# # wikipedia_page = wikipedia.page("'"+things[random.randrange(len(things))]+"'")
+#clean up mention text, strip screen name, no white space
+# topic = mentions[random.randrange(len(things))]
+# wikipedia_page = wikipedia.page(topic)
+# #
+# # # This next line gets the textual content of the page and splits it up
+# # # based on the characters ". " which creates a list of strings. The
+# # # idea is that this would create a list of sentences, but it is not
+# # # perfect
+# sentences = wikipedia_page.content.split(". ")
+# #
+# # # Now you can proceed with the patterns from the tutorials, looking at
+# # # any example where you have a list of strings. Some examples:
+# #
+# # # Prints the first sentence:
+# print(sentences[0])
+# #
+# # # Chooses a random sentence:
+# random_number = random.randrange( len(sentences) )
+# print( sentences[random_number] )
+#
+# # api.update_status(sentences[0])
+# api.update_status("An interesting fact about " + topic + " is: "+ sentences[random.randrange(len(sentences))])
+#
+# mentions = api.mentions_timeline()
+# random_number = random.randrange( len(mentions) )
+# # random_mention = mentions[random_number]
+# latest_mention = mentions[0]
+#
+# # message = "@" + random_mention.user.screen_name + " I promise im not a bot!"
+#
+#
+#
+#
+# # api.update_status(message, in_reply_to_status_id=random_mention.id)
+
+
+
+
+
+# #wiki
+#
+# import wikipedia
+# import random
+#
+# things = ["Vietnam","Syria","Afghanistan","The United States","Canada","Mexico","Turkmenistan","Sweden","Pakistan","Iran","Walmart","Mercedes-AMG","Python","Iphone","Samsung","Microsoft","Nvidia","Socialism","Capitalism","Amazon Rainforest","Amazon","Coding","Milk","Cereal",]
+# #
+# # wikipedia_page = wikipedia.page("'"+things[random.randrange(len(things))]+"'")
+# topic = things[random.randrange(len(things))]
+# wikipedia_page = wikipedia.page(topic)
+# #
+# # # This next line gets the textual content of the page and splits it up
+# # # based on the characters ". " which creates a list of strings. The
+# # # idea is that this would create a list of sentences, but it is not
+# # # perfect
+# sentences = wikipedia_page.content.split(". ")
+# #
+# # # Now you can proceed with the patterns from the tutorials, looking at
+# # # any example where you have a list of strings. Some examples:
+# #
+# # # Prints the first sentence:
+# print(sentences[0])
+# #
+# # # Chooses a random sentence:
+# random_number = random.randrange( len(sentences) )
+# print( sentences[random_number] )
+#
+# # api.update_status(sentences[0])
+# api.update_status("An interesting fact about " + topic + " is: "+ sentences[random.randrange(len(sentences))])
